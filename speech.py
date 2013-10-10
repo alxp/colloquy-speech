@@ -95,7 +95,8 @@ def processUserCommand( command, arguments, connection, view ):
          return True
       elif (args.startswith('rate ')):
 	 rate = args[5:].lstrip()
- 	 message('Speech rate is ' + rate, 'voiceSet', None)
+	 setrate(float(rate))
+ 	 message('Speech rate is ' + rate, 'rateSet', None)
       elif (args in ['help', '?']):
          help_text = [
                'Speech plugin:',
@@ -121,9 +122,9 @@ def processUserCommand( command, arguments, connection, view ):
 def processIncomingMessage( message, view ):
    global speaking
    global speaknick
+   global rate
    msg = message.bodyAsPlainText()
    source = view.identifier()
-   setrate(rate)
    if speaking and source.startswith('Chat Room'):
       if speaknick:
          say(message.senderNickname() + ': ' + msg)
