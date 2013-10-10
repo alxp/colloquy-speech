@@ -19,6 +19,7 @@ from AppKit import *
 speaking = False
 speaknick = False
 synthesizer = None
+rate = 200
 
 def voices():
    '''return a list of available voices'''
@@ -37,6 +38,11 @@ def setvoice(voice):
       synthesizer.setVoice_(voice)
       return True
    return False
+
+def setrate(rate):
+  '''set the voice rate
+  '''
+  synthesizer.setRate_(rate)
 
 def say(txt):
    '''say the specified text'''
@@ -114,6 +120,7 @@ def processIncomingMessage( message, view ):
    global speaknick
    msg = message.bodyAsPlainText()
    source = view.identifier()
+   setrate(rate)
    if speaking and source.startswith('Chat Room'):
       if speaknick:
          say(message.senderNickname() + ': ' + msg)
