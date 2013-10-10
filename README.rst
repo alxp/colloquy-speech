@@ -5,7 +5,7 @@
 -----------------------------------------------------
  A text-to-speech plugin for the Colloquy IRC client
 -----------------------------------------------------
-Forked to add /speech rate command to control the speech rate. 
+Forked to add /speech rate, volume commands  
 
 :author: James Tatum, <jtatum@gmail.com>
 
@@ -44,3 +44,6 @@ Usage
 
 /speech rate
   Sets the speech rate. Defaults to 200 WPM.  
+
+/speech volume
+  Sets the speech volume. 0.0 to 1.0. Default is 0.7

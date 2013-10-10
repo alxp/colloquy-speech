@@ -20,6 +20,7 @@ speaking = False
 speaknick = False
 synthesizer = None
 rate = 200
+volume = 0.7
 
 def voices():
    '''return a list of available voices'''
@@ -44,6 +45,10 @@ def setrate(rate):
   '''
   synthesizer.setRate_(rate)
 
+def setvolume(volume):
+  ''' sets the volume'''
+  synthesizer.setVolume_(volume)
+ 	
 def say(txt):
    '''say the specified text'''
    synthesizer.startSpeakingString_(txt)
@@ -97,6 +102,10 @@ def processUserCommand( command, arguments, connection, view ):
 	 rate = args[5:].lstrip()
 	 setrate(float(rate))
  	 message('Speech rate is ' + rate, 'rateSet', None)
+      elif (args.startswith('volume ')):
+	 volume = args[7:].lstrip()
+	 setvolume(float(volume))
+	 message('Volume set to ' + volume, 'volumeSet', None)
       elif (args in ['help', '?']):
          help_text = [
                'Speech plugin:',
@@ -109,6 +118,7 @@ def processUserCommand( command, arguments, connection, view ):
                '/speech nick off - Don\'t speak the nick',
                '/speech help - Display this help'
 	       '/speech rate - Sets the speech rate. Defaults to 200'
+	       '/speech volume - Sets the speech volume. 0.0 to 1.0.'
                ]
          for line in help_text:
             message(line, 'speechHelp', None)
@@ -124,6 +134,7 @@ def processIncomingMessage( message, view ):
    global speaking
    global speaknick
    global rate
+   global volume
    msg = message.bodyAsPlainText()
    source = view.identifier()
    if speaking and source.startswith('Chat Room'):
