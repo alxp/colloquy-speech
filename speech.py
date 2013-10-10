@@ -93,6 +93,9 @@ def processUserCommand( command, arguments, connection, view ):
          speaknick = False
          message('Will not speak nicknames.', 'nickSpeakSet', None)
          return True
+      elif (args.startswith('rate ')):
+	 rate = args[5:].lstrip()
+ 	 message('Speech rate is ' + rate, 'voiceSet', None)
       elif (args in ['help', '?']):
          help_text = [
                'Speech plugin:',
