@@ -39,3 +39,6 @@ Usage
 
 /speech help
   Produce a list of all commands available in the speech plugin.
+
+/speech rate
+  Sets the speech rate. 
