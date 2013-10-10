@@ -116,9 +116,9 @@ def processUserCommand( command, arguments, connection, view ):
                '/speech voice VOICE - Set speaking voice',
                '/speech nick on - Speak the nick as well',
                '/speech nick off - Don\'t speak the nick',
+	       '/speech rate - Sets the speech rate. Defaults to 200',
+	       '/speech volume - Sets the speech volume. 0.0 to 1.0.',
                '/speech help - Display this help'
-	       '/speech rate - Sets the speech rate. Defaults to 200'
-	       '/speech volume - Sets the speech volume. 0.0 to 1.0.'
                ]
          for line in help_text:
             message(line, 'speechHelp', None)
